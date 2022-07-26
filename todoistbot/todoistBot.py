@@ -1,8 +1,8 @@
 import argparse
 from configparser import RawConfigParser
 
+import telebot
 from expiringdict import ExpiringDict
-from telebot import TeleBot
 from todoist_api_python.api import TodoistAPI
 
 parser = argparse.ArgumentParser(description='Telegram bot for Todoist.')
@@ -13,7 +13,7 @@ args = parser.parse_args()
 config = RawConfigParser()
 config.read(args.conf)
 
-bot = TeleBot(config.get('tokensSection', 'telegram.token'))
+bot = telebot.TeleBot(config.get('tokensSection', 'telegram.token'))
 api = TodoistAPI(config.get('tokensSection', 'todoist.token'))
 
 tg_uid = config.getint('settingsSection', 'telegram.user_id')
@@ -39,6 +39,9 @@ def find_inbox_project_id():
 @bot.message_handler(func=test_access, commands=["start"])
 def start(m):
     bot.send_message(m.chat.id, 'Todoist bot started.')
+    markup = telebot.types.ReplyKeyboardMarkup(resize_keyboard=True)
+    button = telebot.types.KeyboardButton("/notSortedList")
+    markup.add(button)
 
 
 @bot.message_handler(func=test_access, commands=["notSortedList"])
