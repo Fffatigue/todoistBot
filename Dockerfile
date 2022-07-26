@@ -12,4 +12,4 @@ RUN poetry install --no-interaction --no-ansi -vvv
 FROM python as runtime
 ENV PATH="/app/.venv/bin:$PATH"
 COPY --from=poetry /app /app
-CMD todoistbot/todoistBot.py --config=$TODOIST_CONFIG_PATH
+CMD python todoistbot/todoistBot.py --config=$TODOIST_CONFIG_PATH
