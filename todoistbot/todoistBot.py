@@ -38,10 +38,10 @@ def find_inbox_project_id():
 
 @bot.message_handler(func=test_access, commands=["start"])
 def start(m):
-    bot.send_message(m.chat.id, 'Todoist bot started.')
     markup = telebot.types.ReplyKeyboardMarkup(resize_keyboard=True)
     button = telebot.types.KeyboardButton("/notSortedList")
     markup.add(button)
+    bot.send_message(m.chat.id, 'Todoist bot started.', reply_markup=markup)
 
 
 @bot.message_handler(func=test_access, commands=["notSortedList"])
