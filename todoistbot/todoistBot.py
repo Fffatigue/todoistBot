@@ -1,10 +1,17 @@
-from telebot import TeleBot
-from expiringdict import ExpiringDict
-from todoist_api_python.api import TodoistAPI
+import argparse
 from configparser import RawConfigParser
 
+from expiringdict import ExpiringDict
+from telebot import TeleBot
+from todoist_api_python.api import TodoistAPI
+
+parser = argparse.ArgumentParser(description='Telegram bot for Todoist.')
+parser.add_argument('--config', dest='conf', help='Config destination', required=True)
+
+args = parser.parse_args()
+
 config = RawConfigParser()
-config.read('config.properties')
+config.read(args.conf)
 
 bot = TeleBot(config.get('tokensSection', 'telegram.token'))
 api = TodoistAPI(config.get('tokensSection', 'todoist.token'))

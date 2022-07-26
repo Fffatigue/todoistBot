@@ -1,0 +1,7 @@
+version: "3.9"
+services:
+  todoist:
+    container_name: todoist_container
+    image: fffatigue/todoistbot
+    ports:
+      - "8000:5000"
