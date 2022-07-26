@@ -33,5 +33,7 @@ jobs:
           key: ${{ secrets.SERVER_KEY }}
           script: |
             cd todoistBot
+            which docker-compose
+            docker-compose --version
             docker-compose pull
             docker-compose up -d
