@@ -8,7 +8,7 @@ authors = ["a-chmil <a-chmil@yandex-team.ru>"]
 python = "^3.9"
 pytelegrambotapi = "^4.6.0"
 expiringdict = "^1.2.2"
-todoist-api-python = "^v 2.0.2"
+todoist-api-python = "^v2.0.2"
 
 
 [tool.poetry.dev-dependencies]
