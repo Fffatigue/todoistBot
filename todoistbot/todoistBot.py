@@ -32,7 +32,7 @@ def test_access(m):
 def find_inbox_project_id():
     projects = api.get_projects()
     for project in projects:
-        if project.inbox_project:
+        if project.is_inbox_project:
             return project.id
 
 
